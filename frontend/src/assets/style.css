@@ -1,0 +1,9 @@
+.checkedOff {
+    text-decoration: line-through;
+    color: gray;
+    font-style: italic;
+}
+
+.completed {
+    color: gray;
+}
