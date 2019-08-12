@@ -85,10 +85,11 @@
           this.testMessage = "e.data"
           this.loadChecklist(e.data)
       },
-      loadChecklist(userVID) {
-        axios.get(`/onboard/${userVID}`)
+      loadChecklist() {
+        axios.get('/onboard/')
         .then((checklist) => {
         this.todos = checklist.data
+        this.isOpen = true
         })
       },
       minimizeChecklist() {

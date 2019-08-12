@@ -24,9 +24,12 @@ let onboardChecklistPropertiesQuery = '';
 const checklistPropertiesQueryURL = `https://api.hubapi.com/properties/v1/contacts/groups/named/onboard_checklist?includeProperties=true&hapikey=${process.env.HS_API}`
 let userVID
 
-app.get('/onboard/:userVID', (req, res) => {
+app.get('/onboard', (req, res) => {
     //Get all properties currently in Onboard Checklist and create a query string
-    userVID = req.params.userVID
+    console.log("onboard route hit!")
+    console.log(req.params.userVID)
+    console.log(req.query.userVID)
+    userVID = 2401
     axios
     .get(checklistPropertiesQueryURL)
     .then(allOnboardProperties => {
@@ -58,7 +61,6 @@ app.get('/onboard/:userVID', (req, res) => {
                         })
                 }
             }
-            console.log(checklistPropertiesInfo)
             res.json(checklistPropertiesInfo)
         })
         .catch(error => console.log("User Property Query: " + error))
@@ -69,7 +71,6 @@ app.get('/onboard/:userVID', (req, res) => {
 //Check HubSpot for User (by teacher_id held in company name)
 app.get('/user', (req, res) => {
     let userSearchQuery = `https://api.hubapi.com/contacts/v1/search/query?q=${req.query.teacher_id}&hapikey=${process.env.HS_API}`
-    console.log(userSearchQuery, userVID)
     axios
     .get(userSearchQuery)
     .then(user => {
