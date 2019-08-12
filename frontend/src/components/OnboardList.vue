@@ -18,10 +18,6 @@
           </v-btn>
           
         </v-toolbar>
-
-        <v-container>
-          <p v-text="testMessage"></p>
-        </v-container>
         
         <v-container v-if="isOpen">
           <v-list>
@@ -82,8 +78,8 @@
         if(e.origin != "https://dirkcallaway.github.io/embeddedHost/") {
           return
         }
-          this.testMessage = "e.data"
-          this.loadChecklist(e.data)
+          this.testMessage = e.data
+          this.loadChecklist()
       },
       loadChecklist() {
         axios.get('/onboard/')
