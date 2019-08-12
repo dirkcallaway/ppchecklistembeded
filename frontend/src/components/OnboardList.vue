@@ -79,14 +79,11 @@
     },
     methods: {
       receiveMessage(e) {
-        // if(e.origin != "http://localhost:8080/") {
-        //   return
-        // }
-        this.testMessage = e.data
-        if(this.testMessage == 2401){
-          this.testMessage = "loading Checklist"
-          this.loadChecklist(e.data)
+        if(e.origin != "https://dirkcallaway.github.io/embeddedHost/") {
+          return
         }
+          this.testMessage = "e.data"
+          this.loadChecklist(e.data)
       },
       loadChecklist(userVID) {
         axios.get(`/onboard/${userVID}`)
