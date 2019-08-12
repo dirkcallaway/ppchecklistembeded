@@ -4,7 +4,7 @@
       <v-card>
         <v-toolbar color="blue" dark>
 
-          <v-toolbar-title>Onboard Checklist {{ testMessage }}</v-toolbar-title>
+          <v-toolbar-title>Onboard Checklist</v-toolbar-title>
 
           <v-spacer></v-spacer>
 
@@ -79,10 +79,14 @@
         //   return
         // }
           this.testMessage = e.data
-          this.loadChecklist()
+          this.loadChecklist(e.data)
       },
-      loadChecklist() {
-        axios.get('/onboard/')
+      loadChecklist(data) {
+        axios.get('/onboard/', {
+          params: {
+            userVID : data
+          }
+        })
         .then((checklist) => {
         this.todos = checklist.data
         this.isOpen = true

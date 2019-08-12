@@ -27,9 +27,7 @@ let userVID
 app.get('/onboard', (req, res) => {
     //Get all properties currently in Onboard Checklist and create a query string
     console.log("onboard route hit!")
-    console.log(req.params.userVID)
-    console.log(req.query.userVID)
-    userVID = 2401
+    userVID = req.query.userVID
     axios
     .get(checklistPropertiesQueryURL)
     .then(allOnboardProperties => {

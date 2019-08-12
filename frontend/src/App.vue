@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <v-app>
     <OnboardList />
+    </v-app>
   </div>
 </template>
 
