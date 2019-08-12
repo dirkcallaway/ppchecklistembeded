@@ -18,6 +18,10 @@
           </v-btn>
           
         </v-toolbar>
+
+        <v-container>
+          <p v-text="testMessage"></p>
+        </v-container>
         
         <v-container v-if="isOpen">
           <v-list>
@@ -74,11 +78,18 @@
       })
     },
     methods: {
-      receiveMessage(event) {
-        this.testMessage = event.data
+      receiveMessage(e) {
+        // if(e.origin != "http://localhost:8080/") {
+        //   return
+        // }
+        this.testMessage = e.data
+        if(this.testMessage == 2401){
+          this.testMessage = "loading Checklist"
+          this.loadChecklist(e.data)
+        }
       },
-      loadChecklist() {
-        axios.get('/onboard')
+      loadChecklist(userVID) {
+        axios.get(`/onboard/${userVID}`)
         .then((checklist) => {
         this.todos = checklist.data
         })

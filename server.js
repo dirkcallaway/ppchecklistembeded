@@ -24,11 +24,13 @@ let onboardChecklistPropertiesQuery = '';
 const checklistPropertiesQueryURL = `https://api.hubapi.com/properties/v1/contacts/groups/named/onboard_checklist?includeProperties=true&hapikey=${process.env.HS_API}`
 let userVID
 
-app.get('/onboard', (req, res) => {
+app.get('/onboard/:userVID', (req, res) => {
     //Get all properties currently in Onboard Checklist and create a query string
+    userVID = req.params.userVID
     axios
     .get(checklistPropertiesQueryURL)
     .then(allOnboardProperties => {
+        onboardChecklistPropertiesQuery = '';
         for(property of allOnboardProperties.data.properties) {
             onboardChecklistPropertiesQuery += `&property=${property.name}`
         }
@@ -56,6 +58,7 @@ app.get('/onboard', (req, res) => {
                         })
                 }
             }
+            console.log(checklistPropertiesInfo)
             res.json(checklistPropertiesInfo)
         })
         .catch(error => console.log("User Property Query: " + error))
