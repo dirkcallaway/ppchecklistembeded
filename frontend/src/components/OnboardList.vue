@@ -75,9 +75,9 @@
     },
     methods: {
       receiveMessage(e) {
-        if(e.origin != "https://dirkcallaway.github.io/embeddedHost/") {
-          return
-        }
+        // if(e.origin != "https://dirkcallaway.github.io/embeddedHost/") {
+        //   return
+        // }
           this.testMessage = e.data
           this.loadChecklist()
       },
