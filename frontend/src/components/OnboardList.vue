@@ -4,7 +4,7 @@
       <v-card>
         <v-toolbar color="blue" dark>
 
-          <v-toolbar-title>Onboard Checklist</v-toolbar-title>
+          <v-toolbar-title>Onboarding Checklist</v-toolbar-title>
 
           <v-spacer></v-spacer>
 
