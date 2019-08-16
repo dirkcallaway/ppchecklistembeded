@@ -6,8 +6,6 @@
 
           <v-toolbar-title>Onboarding Checklist</v-toolbar-title>
 
-          {{ testOrigin }}
-
           <v-spacer></v-spacer>
 
           <v-progress-circular :value="remainingValue"></v-progress-circular>
@@ -77,9 +75,9 @@
     },
     methods: {
       receiveMessage(e) {
-        // if(e.origin != "https://dirkcallaway.github.io/embeddedHost/#") {
-        //   return
-        // }
+        if(e.origin != "https://dirkcallaway.github.io") {
+          return
+        }
           this.testOrigin = e.origin
           this.loadChecklist(e.data)
       },
