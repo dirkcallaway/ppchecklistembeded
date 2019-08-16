@@ -12,10 +12,10 @@
 
           <v-spacer></v-spacer>
 
-          <v-btn icon v-on:click="minimizeChecklist">
+          <!-- <v-btn icon v-on:click="minimizeChecklist">
             <v-icon v-if="isOpen">highlight_off</v-icon>
             <v-icon v-else>minimize</v-icon>
-          </v-btn>
+          </v-btn> -->
           
         </v-toolbar>
         
@@ -75,9 +75,9 @@
     },
     methods: {
       receiveMessage(e) {
-        // if(e.origin != "https://dirkcallaway.github.io/embeddedHost/") {
-        //   return
-        // }
+        if(e.origin != "https://dirkcallaway.github.io/embeddedHost/#") {
+          return
+        }
           this.testMessage = e.data
           this.loadChecklist(e.data)
       },
