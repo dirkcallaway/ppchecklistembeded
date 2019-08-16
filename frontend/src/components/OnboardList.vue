@@ -80,7 +80,6 @@
         }
           this.testOrigin = e.origin
           this.loadChecklist(e.data)
-          e.source.postMessage("reload", e.origin)
       },
       loadChecklist(data) {
         axios.get('/onboard/', {
@@ -91,6 +90,7 @@
         .then((checklist) => {
         this.todos = checklist.data
         this.isOpen = true
+        parent.postMessage("reload", 'https://dirkcallaway.github.io')
         })
       },
       minimizeChecklist() {
