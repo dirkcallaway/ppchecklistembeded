@@ -6,6 +6,8 @@
 
           <v-toolbar-title>Onboarding Checklist</v-toolbar-title>
 
+          {{ testOrigin }}
+
           <v-spacer></v-spacer>
 
           <v-progress-circular :value="remainingValue"></v-progress-circular>
@@ -58,7 +60,7 @@
         blue: "blue",
         remainingValue: 0,
         checkbox1: null,
-        testMessage: 'TEST'
+        testOrigin: null
       }
     },
     created() {
@@ -75,10 +77,10 @@
     },
     methods: {
       receiveMessage(e) {
-        if(e.origin != "https://dirkcallaway.github.io/embeddedHost/#") {
-          return
-        }
-          this.testMessage = e.data
+        // if(e.origin != "https://dirkcallaway.github.io/embeddedHost/#") {
+        //   return
+        // }
+          this.testOrigin = e.origin
           this.loadChecklist(e.data)
       },
       loadChecklist(data) {
