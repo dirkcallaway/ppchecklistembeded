@@ -80,6 +80,7 @@
         }
           this.testOrigin = e.origin
           this.loadChecklist(e.data)
+          e.source.postMessage("reload", e.origin)
       },
       loadChecklist(data) {
         axios.get('/onboard/', {
